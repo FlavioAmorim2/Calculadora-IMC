@@ -20,33 +20,32 @@ document.addEventListener("DOMContentLoaded", function () {
     const imc = peso / (altura * altura);
     const resultadoElement = document.getElementById("resultado");
 
+    resultadoElement.classList.remove("hidden");
+
     let categoria;
 
     if (imc < 18.5) {
       categoria = "Abaixo do peso";
-      resultadoElement.style.backgroundColor = "#FFFF00";
-    } else if (imc > 18.5 & imc < 25) {
+      resultadoElement.style.backgroundColor = "var(--yellow)";
+    } else if ((imc > 18.5) & (imc < 25)) {
       categoria = "Peso normal";
-      resultadoElement.style.backgroundColor = "#00FF00";
-
-    } else if (imc > 25 & imc < 30) {
+      resultadoElement.style.backgroundColor = "var(--green)";
+    } else if ((imc > 25) & (imc < 30)) {
       categoria = "Sobrepeso";
-      resultadoElement.style.backgroundColor = "#FFA500";
-
+      resultadoElement.style.backgroundColor = "var(--yellow)";
     } else {
       categoria = "Obesidade";
-      resultadoElement.style.backgroundColor = "#FF0000";
-
+      resultadoElement.style.backgroundColor = "var(--red)";
     }
 
     resultadoElement.innerHTML = `<p> ${nome}, seu IMC é ${imc.toFixed(
-      2
+      2,
     )} </p> <p>Você está na categoria: ${categoria}</p>`;
 
     document.getElementById("categoria").value = categoria; //atualizar categoria - input;
     let dados = new FormData(formulario);
 
-    for(let [chave, valor] of dados.entries()) 
-        console.log( chave + " : " + valor);
+    for (let [chave, valor] of dados.entries())
+      console.log(chave + " : " + valor);
   });
 });
